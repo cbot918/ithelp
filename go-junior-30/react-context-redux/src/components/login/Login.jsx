@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../../App'
 
 function Login(){
-  
+
   const {state, dispatch} = useContext(UserContext)
 
   const [name, setName] = useState("")

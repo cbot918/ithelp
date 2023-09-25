@@ -16,7 +16,6 @@ function App() {
         <Routes>
           <Route path="*" element={<Login />}></Route>
           <Route path="/enemylist" element={<EnemyList/> } />
-          {/* <Hello/> */}
         </Routes>
       </UserContext.Provider> 
     </>
