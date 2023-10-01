@@ -34,8 +34,6 @@ window.onload = ()=>{
   log(store.getState())
 
 
-  
-
 
 }
 
