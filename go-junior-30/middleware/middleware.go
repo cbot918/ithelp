@@ -17,5 +17,4 @@ func RequireAuth() fiber.Handler {
 		}
 		return c.Next()
 	}
-
 }
