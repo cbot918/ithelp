@@ -1,0 +1,1 @@
+docker run -it --name mockdb -p 5435:5432 -e POSTGRES_PASSWORD=12345 -e POSTGRES_DB=blog postgres

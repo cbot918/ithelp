@@ -1,0 +1,1 @@
+docker cp ec.sql mockdb:/
