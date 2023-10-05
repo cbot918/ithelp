@@ -1,0 +1,6 @@
+-- teardown
+ALTER TABLE IF EXISTS "orders" DROP CONSTRAINT IF EXISTS "orders_order_by_fkey";
+
+DROP TABLE IF EXISTS orders;
+DROP TABLE IF EXISTS items;
+DROP TABLE IF EXISTS users;
