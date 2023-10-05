@@ -8,15 +8,21 @@ import (
 )
 
 type API struct {
-	C controller.Controller
+	APP *fiber.App
+	C   controller.Controller
 }
 
-func NewAPI(q *db.Queries) *API {
-	return &API{C: *controller.NewController(q)}
-}
+func NewAPI(app *fiber.App, q *db.Queries) *API {
 
-func (a *API) Ping(c *fiber.Ctx) error {
+	a := new(API)
 
-	return c.JSON(fiber.Map{"message": "pong"})
+	a.C = *controller.NewController(q)
+	a.APP = app
 
+	a.APP.Get("/ping", a.C.Ping)
+
+	a.APP.Get("/getuser", a.C.GetUser)
+	a.APP.Post("/createuser", a.C.CreateUser)
+	a.APP.Delete("/deleteuser/:id", a.C.DeleteUser)
+	return a
 }

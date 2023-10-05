@@ -7,7 +7,6 @@ import (
 	"log"
 
 	db "6/db/sqlc"
-	i "6/internal"
 
 	"6/internal"
 
@@ -18,7 +17,7 @@ import (
 
 func main() {
 
-	cfg, err := i.NewConfig()
+	cfg, err := internal.NewConfig()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -34,46 +33,12 @@ func main() {
 
 	query := db.New(conn)
 
-	api := internal.NewAPI(query)
+	api := internal.NewAPI(app, query)
 
-	app.Get("/ping", api.Ping)
-
-	err = app.Listen(cfg.HOST)
+	err = api.APP.Listen(cfg.HOST)
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	// user := db.CreateUserParams{
-	// 	Name:     "sqlctest",
-	// 	Email:    "sqlctest@gmail.com",
-	// 	Password: "12345",
-	// 	Discount: 0.7,
-	// }
-
-	// q := db.New(conn)
-
-	// result, err := q.CreateUser(context.Background(), user)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// printJson(result)
-
-	// u, err := q.GetUser(context.Background(), 12)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// printJson(u)
-
-	// err = q.DeleteUser(context.Background(), 12)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-
-	// users, err := q.ListUsers(context.Background())
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// printJson(users)
 
 }
 
